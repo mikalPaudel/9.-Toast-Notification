@@ -18,7 +18,7 @@ body{
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
-    border: #333 solid 1px;
+    border: #333 solid 2px;
     padding: 1rem;
     border-radius: 5px;
     background-color: #fff;
@@ -49,18 +49,64 @@ button:hover{
     gap: 10px;
     padding: 15px;
     overflow: hidden;
-    border-radius: 5px;
     gap: 0.5rem;
     z-index: 1000;
 }
 .toast{
     display: flex;
     align-items: center;
-    padding: 10px 15px;
-    border-radius: 5px;
-    color: #fff;
+    padding:15px;
+    color: #000000;
+    background-color: #ffffff;
+    font-weight: 600;
     box-shadow: 0 2px 10px rgba(0,0,0,0.9);
     animation: slideIn 0.5s, fadeOut 0.5s 2.5s forwards;
     font-size: 14px;
+    min-width: 250px;
+    max-width: 300px;
     position: relative;
+    transform: translateX(100%);
+    animation: moveleft 0.5s forwards, fadeOut 0.5s 4.5s forwards;;
+}
+@keyframes moveleft{
+    100%{
+        transform: translateX(0);
+    }
+}
+.toast i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+.success i{
+    color: #4BB543;
+}
+.error i{
+    color: #FF3333;
+}
+.invalid i{
+    color: orange;
+}
+
+.toast::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #4BB543;
+    animation: anim 5s linear forwards;
+    
+}
+@keyframes anim{
+    100%{
+        width: 0;
+    }
+}
+
+.toast.error::after{
+    background-color: #FF3333;
+}
+.toast.invalid::after{
+    background-color: orange;
 }
